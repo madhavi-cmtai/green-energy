@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
@@ -9,9 +10,25 @@ import {
     Settings,
     Lightbulb,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card"; 
+import { Card, CardContent } from "@/components/ui/card";
 
 const AboutPage = () => {
+    const images = [
+        "/images/home/magEnergy/mag1.jpeg",
+        "/images/home/magEnergy/mag2.jpeg",
+        "/images/home/magEnergy/mag3.jpeg",
+    ];
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     const benefits = [
         {
             icon: Zap,
@@ -64,7 +81,9 @@ const AboutPage = () => {
                         whileHover={{ scale: 1.05 }}
                     >
                         <Lightbulb className="w-5 h-5 text-emerald-600" />
-                        <span className="text-emerald-700 font-semibold">Revolutionary Technology</span>
+                        <span className="text-emerald-700 font-semibold">
+                            Revolutionary Technology
+                        </span>
                     </motion.div>
 
                     <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
@@ -74,9 +93,11 @@ const AboutPage = () => {
                         </span>
                     </h2>
                     <p className="text-xl text-gray-600 max-w-7xl mx-auto leading-relaxed">
-                        Our breakthrough magnetic electricity generator harnesses the power of permanent magnets to create a
-                        continuous, clean energy source that operates without any external fuel or power input. This revolutionary
-                        technology represents the future of sustainable energy generation.
+                        Our breakthrough magnetic electricity generator harnesses the power
+                        of permanent magnets to create a continuous, clean energy source
+                        that operates without any external fuel or power input. This
+                        revolutionary technology represents the future of sustainable energy
+                        generation.
                     </p>
                 </motion.div>
 
@@ -110,7 +131,9 @@ const AboutPage = () => {
                                             <h3 className="font-bold text-gray-900 mb-3 text-lg group-hover:text-emerald-700 transition-colors">
                                                 {benefit.title}
                                             </h3>
-                                            <p className="text-gray-600 leading-relaxed">{benefit.desc}</p>
+                                            <p className="text-gray-600 leading-relaxed">
+                                                {benefit.desc}
+                                            </p>
                                         </CardContent>
                                     </Card>
                                 </motion.div>
@@ -131,11 +154,12 @@ const AboutPage = () => {
                             transition={{ duration: 0.6 }}
                         >
                             <Image
-                                src="/images/home/generator.jpg"
+                                src={images[currentImageIndex]}
                                 alt="Magnetic Generator"
                                 width={400}
                                 height={400}
-                                className="w-full h-auto"
+                                className="w-full h-auto transition-opacity duration-1000"
+                                key={images[currentImageIndex]}
                             />
                             <motion.div
                                 className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-transparent to-teal-500/20"
@@ -149,18 +173,27 @@ const AboutPage = () => {
                             >
                                 <div className="flex items-center space-x-2">
                                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                                    <span className="text-sm font-semibold text-gray-800">Active</span>
+                                    <span className="text-sm font-semibold text-gray-800">
+                                        Active
+                                    </span>
                                 </div>
                                 <div className="text-xs text-gray-600 mt-1">Generating 50kW</div>
                             </motion.div>
                             <motion.div
                                 className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-teal-200"
                                 animate={{ y: [5, -5, 5] }}
-                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: 1,
+                                }}
                             >
                                 <div className="flex items-center space-x-2">
                                     <Zap className="w-4 h-4 text-yellow-500" />
-                                    <span className="text-sm font-semibold text-gray-800">Efficiency</span>
+                                    <span className="text-sm font-semibold text-gray-800">
+                                        Efficiency
+                                    </span>
                                 </div>
                                 <div className="text-xs text-gray-600 mt-1">99.2% Output</div>
                             </motion.div>
