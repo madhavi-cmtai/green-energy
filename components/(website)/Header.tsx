@@ -50,7 +50,7 @@ const Header = () => {
       <div className="container mx-auto px-4 flex items-center justify-between py-1.5 min-h-[46px]">
         <div className="flex items-center gap-0">
           <Link href="/" className="inline-flex items-center">
-            <Image src="/logo.jpg" alt="Logo" width={100} height={67} className="mr-2 rounded-md" />
+            <Image src="/images/logo.jpeg" alt="Logo" width={150} height={100} className="mr-2 rounded-md -mt-2.5" />
           </Link>
         </div>
         {/* Desktop Nav */}
