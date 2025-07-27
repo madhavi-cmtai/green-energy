@@ -2,35 +2,14 @@
 import { motion } from "framer-motion"
 import type React from "react"
 import MagneticEnergySection from "@/components/home/magnetic-energy"
-import {
-  Zap,
-  Leaf,
-  Settings,
-  TrendingUp,
-  Globe,
-  DollarSign,
-  Target,
-  Lightbulb,
-  Battery,
-  Sun,
-  ArrowRight,
-  CheckCircle,
-  BarChart3,
-  Recycle,
-  Shield,
-  Home,
-  Mail,
-  User,
-  MessageSquare,
-  Send,
-  Phone,
-  MapPin,
-} from "lucide-react"
+import { Zap, Leaf, Settings, TrendingUp, Globe, DollarSign, Target, Lightbulb, Battery, Sun, ArrowRight, CheckCircle, BarChart3, Recycle, Shield, Home,} from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts"
 import { useEffect, useState } from "react";
+import TeamMembersSection from "./TeamMembersSection"
+import CarbonXHeroSection from "./CarbonXHeroSection"
 
 
 // Market data for the chart
@@ -314,7 +293,7 @@ const ContentHighlightsSection = () => {
     { text: "Fast production scaling", icon: TrendingUp },
   ]
 
-  return (
+  return (<>
     <section className="py-24 bg-gradient-to-br from-emerald-50 to-teal-50 relative overflow-hidden">
       {/* Background Pattern */}
       <motion.div
@@ -378,6 +357,8 @@ const ContentHighlightsSection = () => {
         </motion.div>
       </div>
     </section>
+    <TeamMembersSection/>
+  </>
   )
 }
 
@@ -424,19 +405,19 @@ const FeatureGridSection = () => {
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Background blob */}
       <motion.div
-        className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full opacity-30 blur-3xl"
+        className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full opacity-30 blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           rotate: [0, 90, 0],
         }}
-        transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY }}
+        transition={{ duration: 15, repeat: Infinity }}
       />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -450,8 +431,8 @@ const FeatureGridSection = () => {
             <span className="text-emerald-700 font-semibold">Core Benefits</span>
           </motion.div>
 
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8">
-            Revolutionary{" "}
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            Revolutionary{' '}
             <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
               Features
             </span>
@@ -459,15 +440,20 @@ const FeatureGridSection = () => {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-12"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
         >
           {features.map((feature, index) => (
-            <motion.div key={index} variants={scaleIn} whileHover={{ y: -10, scale: 1.02 }} className="group">
-              <Card className="overflow-hidden border-2 border-transparent hover:border-emerald-200 transition-all duration-500 hover:shadow-2xl bg-gradient-to-br from-white to-gray-50 group-hover:from-emerald-50 group-hover:to-teal-50">
+            <motion.div
+              key={index}
+              variants={scaleIn}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group"
+            >
+              <Card className="overflow-hidden border hover:border-emerald-200 transition-all duration-500 bg-gradient-to-br from-white to-gray-50 group-hover:from-emerald-50 group-hover:to-teal-50">
                 <div className="relative h-72 overflow-hidden -mt-7">
                   <Image
                     src={feature.image || "/placeholder.svg"}
@@ -476,24 +462,26 @@ const FeatureGridSection = () => {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                  {/* Animated Icon */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                   <motion.div
-                    className="absolute top-4 right-4 w-12 h-12 bg-emerald-500/90 backdrop-blur-sm rounded-full flex items-center justify-center"
+                    className="absolute top-3 right-3 w-10 h-10 bg-emerald-500/90 backdrop-blur-sm rounded-full flex items-center justify-center"
                     animate={{
-                      boxShadow: ["0 0 0 0 rgba(16, 185, 129, 0.4)", "0 0 0 20px rgba(16, 185, 129, 0)"],
+                      boxShadow: [
+                        '0 0 0 0 rgba(16, 185, 129, 0.4)',
+                        '0 0 0 15px rgba(16, 185, 129, 0)',
+                      ],
                     }}
-                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                    transition={{ duration: 2, repeat: Infinity }}
                   >
-                    <feature.icon className="w-6 h-6 text-white" />
+                    <feature.icon className="w-5 h-5 text-white" />
                   </motion.div>
                 </div>
 
-                <CardContent className="p-8 -mt-7">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-emerald-700 transition-colors">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-emerald-700 transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <p className="text-gray-600 text-sm">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -503,6 +491,7 @@ const FeatureGridSection = () => {
     </section>
   )
 }
+
 
 // Power Output Metrics Section
 const PowerOutputSection = () => {
@@ -766,7 +755,7 @@ const ZeroEmissionProjectionsSection = () => {
         >
           {projections.map((projection, index) => (
             <motion.div key={index} variants={scaleIn} whileHover={{ y: -10, scale: 1.02 }} className="group">
-              <Card className="h-full border-2 border-transparent hover:border-emerald-300 transition-all duration-500 hover:shadow-2xl bg-white/80 backdrop-blur-sm group-hover:bg-white">
+              <Card className="h-full border-2 border-transparent hover:border-emerald-300 transition-all duration-500 hover:shadow-sm bg-white/80 backdrop-blur-sm group-hover:bg-white">
                 <CardContent className="p-8 text-center">
                   <motion.div
                     className={`w-20 h-20 bg-gradient-to-br ${projection.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
@@ -822,6 +811,7 @@ const KeyInsightsSection = () => {
   ]
 
   return (
+    <>
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -878,11 +868,10 @@ const KeyInsightsSection = () => {
         </motion.div>
       </div>
     </section>
+    <CarbonXHeroSection/>
+    </>
   )
 }
-
-// Closing Statement Section
-
 
 
 

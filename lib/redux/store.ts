@@ -5,6 +5,7 @@ import productReducer from "./features/productSlice";
 import serviceReducer from "./features/serviceSlice";
 import authReducer from "./features/authSlice";
 import countReducer from "./features/countSlice";
+import teamMemberReducer from "./features/teamMemberSlice";
 
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
     services:serviceReducer, 
     auth: authReducer,
     count: countReducer,
+    teamMembers: teamMemberReducer,
   },
 });
 

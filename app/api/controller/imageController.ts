@@ -82,9 +82,22 @@ const ReplaceImage = async (newFile: File, oldImageUrl: string): Promise<string>
   }
 };
 
+const DeleteImage = async (imageUrl: string): Promise<void> => {
+  try {
+    const bucket = adminStorage.bucket();
+    const baseUrl = `https://storage.googleapis.com/${bucket.name}/`;
 
+    if (imageUrl?.startsWith(baseUrl)) {
+      const filePath = imageUrl.replace(baseUrl, "");
+      await bucket.file(filePath).delete();
+    }
+  } catch (error: any) {
+    console.error("DeleteImage error:", error);
+    throw new Error("Failed to delete image: " + error.message);
+  }
+};
 
     
 
 
-export { UploadImage, ReplaceImage };  
+export { UploadImage, ReplaceImage, DeleteImage };  

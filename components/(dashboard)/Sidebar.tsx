@@ -5,14 +5,12 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   FileText,
-  Users,
   Image,
   LogOut,
   MapPin,
   Package,
   Menu,
-  History,
-  Building2,
+  Users2Icon
 } from "lucide-react";
 
 const links = [
@@ -20,6 +18,7 @@ const links = [
   { name: "Blogs", href: "/dashboard/blogs", icon: <FileText /> },
   { name: "Products", href: "/dashboard/products", icon: <Package /> },
   { name: "Services", href: "/dashboard/services", icon: <MapPin /> },
+  { name: "Team", href: "/dashboard/team", icon: < Users2Icon /> },
   { name: "Leads", href: "/dashboard/leads", icon: <FileText /> },
   { name: "Logout", href: "/logout", icon: <LogOut /> },
 ];
