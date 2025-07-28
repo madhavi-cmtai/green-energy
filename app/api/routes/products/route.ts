@@ -53,9 +53,7 @@ export async function POST(req: NextRequest) {
     try {
         const form = formidable({ multiples: true, keepExtensions: true });
 
-        const incomingReq = await requestToNodeStream(req); // ✅ Await it
- // ✅ FIXED LINE
-
+        const incomingReq = await requestToNodeStream(req);
         const { fields, files }: { fields: formidable.Fields; files: formidable.Files } =
             await new Promise((resolve, reject) => {
                 form.parse(incomingReq as any, (err, fields, files) => {
@@ -67,6 +65,9 @@ export async function POST(req: NextRequest) {
         const name = Array.isArray(fields.name) ? fields.name[0] : fields.name;
         const summary = Array.isArray(fields.summary) ? fields.summary[0] : fields.summary;
         const power = Array.isArray(fields.power) ? fields.power[0] : fields.power;
+        let category = Array.isArray(fields.category) ? fields.category[0] : fields.category;
+        category = category?.toLowerCase().trim() || "others";
+
         const imageFiles = Array.isArray(files.images) ? files.images : files.images ? [files.images] : [];
 
         if (!name || !summary || !power || imageFiles.length === 0) {
@@ -86,6 +87,7 @@ export async function POST(req: NextRequest) {
             name,
             summary,
             power,
+            category,
             images: uploadedImageUrls,
             createdOn: new Date().toISOString(),
             updatedOn: new Date().toISOString(),

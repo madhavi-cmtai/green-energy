@@ -4,24 +4,28 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogClose,} from "@/components/ui/dialog";
-import { Loader2, Plus, Edit, Trash2, Search, Image as ImageIcon } from "lucide-react";
+import { Loader2, Plus, Edit, Trash2, Search, Image as ImageIcon,} from "lucide-react";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchBlogs, selectBlogs, selectError, selectIsLoading, addBlog,  updateBlog, deleteBlog, BlogItem,} from "@/lib/redux/features/blogsSlice";
+import { fetchBlogs, selectBlogs, selectError, selectIsLoading, addBlog, updateBlog, deleteBlog, BlogItem} from "@/lib/redux/features/blogsSlice";
 import { AppDispatch } from "@/lib/redux/store";
 import { toast } from "sonner";
 
 export default function BlogPage() {
   const dispatch = useDispatch<AppDispatch>();
   const blogs = useSelector(selectBlogs);
-  const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
 
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [editBlog, setEditBlog] = useState<BlogItem | null>(null);
-  const categories = ["Technology", "Installation", "Case Study", "Analysis"];
+  const [deleteBlogItem, setDeleteBlogItem] = useState<BlogItem | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+  const categories = ["Technology", "Installation", "Case Study", "Analysis", "Others"];
+
   const [form, setForm] = useState({
     title: "",
     summary: "",
@@ -29,9 +33,6 @@ export default function BlogPage() {
     category: categories[0],
   });
 
-  const [deleteBlogItem, setDeleteBlogItem] = useState<BlogItem | null>(null);
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -57,12 +58,12 @@ export default function BlogPage() {
     setEditBlog(blog);
     setForm({
       title: blog.title,
-      summary: blog.summary || "", // ✅ use summary
+      summary: blog.summary || "",
       image: blog.image || "",
-      category: blog.category || categories[0],
+      category: blog.category || "Others",
     });
-    setImageFile(null);
     setImagePreview(blog.image || null);
+    setImageFile(null);
     setModalOpen(true);
   };
 
@@ -81,8 +82,8 @@ export default function BlogPage() {
     try {
       const formData = new FormData();
       formData.append("title", form.title);
-      formData.append("summary", form.summary); // ✅ changed from description
-      formData.append("category", form.category);
+      formData.append("summary", form.summary);
+      formData.append("category", form.category || "Others");
 
       if (imageFile) {
         formData.append("image", imageFile);
@@ -115,13 +116,14 @@ export default function BlogPage() {
     setLoading(true);
     await dispatch(deleteBlog(deleteBlogItem.id));
     await dispatch(fetchBlogs());
-    setLoading(false);
     setDeleteBlogItem(null);
+    setLoading(false);
     toast.success("Blog deleted!");
   };
 
   return (
     <div className="mx-auto p-0 flex flex-col gap-8">
+      {/* Top Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-2 mb-1 flex-wrap">
         <h2 className="text-xl font-bold text-[var(--primary-green)]" style={{ fontFamily: 'var(--font-main)' }}>
           Blogs
@@ -145,6 +147,7 @@ export default function BlogPage() {
         </div>
       </div>
 
+      {/* Blog Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {isLoading ? (
           <div className="col-span-full text-center text-gray-400 py-12">
@@ -165,8 +168,12 @@ export default function BlogPage() {
                   <ImageIcon className="w-16 h-16 text-gray-300 mx-auto" />
                 )}
               </div>
+
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
+                  <div className="inline-block text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-full mb-1">
+                    {blog.category || "Others"}
+                  </div>
                   <div className="text-lg font-bold mb-1" style={{ fontFamily: 'var(--font-main)' }}>
                     {blog.title}
                   </div>
@@ -191,7 +198,7 @@ export default function BlogPage() {
         )}
       </div>
 
-      {/* Add/Edit Modal */}
+      {/* Add/Edit Dialog */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -261,7 +268,7 @@ export default function BlogPage() {
         </DialogContent>
       </Dialog>
 
-      {/* Delete Confirmation */}
+      {/* Delete Confirmation Dialog */}
       <Dialog open={!!deleteBlogItem} onOpenChange={(open) => !open && setDeleteBlogItem(null)}>
         <DialogContent>
           <DialogHeader>

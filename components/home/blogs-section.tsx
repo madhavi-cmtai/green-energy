@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Lightbulb, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/lib/redux/store";
+import { AppDispatch } from "@/lib/redux/store";
 import {
     fetchBlogs,
     selectBlogs,
@@ -16,17 +16,19 @@ import {
 
 const BlogPage = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const maxVisible = 3;
     const dispatch = useDispatch<AppDispatch>();
     const blogs = useSelector(selectBlogs);
     const loading = useSelector(selectIsLoading);
+    const maxVisible = 3;
 
     useEffect(() => {
         dispatch(fetchBlogs());
     }, [dispatch]);
 
     if (loading) {
-        return <div className="text-white text-center py-20">Loading blogs...</div>;
+        return (
+            <div className="text-white text-center py-20">Loading blogs...</div>
+        );
     }
 
     return (
@@ -62,7 +64,9 @@ const BlogPage = () => {
                         whileHover={{ scale: 1.05 }}
                     >
                         <Lightbulb className="w-5 h-5 text-emerald-400" />
-                        <span className="text-emerald-300 font-semibold">Knowledge Hub</span>
+                        <span className="text-emerald-300 font-semibold">
+                            Knowledge Hub
+                        </span>
                     </motion.div>
 
                     <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -72,8 +76,8 @@ const BlogPage = () => {
                         </span>
                     </h2>
                     <p className="text-xl text-gray-300 max-w-5xl mx-auto leading-relaxed">
-                        Stay updated with the latest developments in magnetic energy technology,
-                        installation guides, and industry insights.
+                        Stay updated with the latest developments in magnetic energy
+                        technology, installation guides, and industry insights.
                     </p>
                 </motion.div>
 
@@ -113,14 +117,17 @@ const BlogPage = () => {
                                         animate={{ opacity: 1, scale: 1 }}
                                         transition={{ duration: 0.3, delay: index * 0.1 }}
                                     >
-                                        {blog.category}
+                                        {blog.category || "General"}
                                     </motion.div>
 
                                     <motion.div
                                         className="absolute bottom-0 left-0 right-0 p-8 text-white"
                                         initial={{ opacity: 1 }}
                                         animate={{
-                                            opacity: hoveredIndex !== null && hoveredIndex !== index ? 0 : 1,
+                                            opacity:
+                                                hoveredIndex !== null && hoveredIndex !== index
+                                                    ? 0
+                                                    : 1,
                                         }}
                                         transition={{ duration: 0.4 }}
                                     >
@@ -130,7 +137,7 @@ const BlogPage = () => {
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.5, delay: 0.2 }}
                                         >
-                                            <span>{blog.date}</span>
+                                            <span>{blog.date || ""}</span>
                                         </motion.div>
 
                                         <motion.h3

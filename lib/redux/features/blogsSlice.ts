@@ -18,7 +18,7 @@ interface BlogState {
   blogs: BlogItem[];
   isLoading: boolean;
   error: string | null;
-  selectedBlog: BlogItem | null;
+  selectedBlog: BlogItem | null; 
 }
 
 const initialState: BlogState = {

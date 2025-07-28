@@ -62,6 +62,8 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
         const name = Array.isArray(fields.name) ? fields.name[0] : fields.name;
         const summary = Array.isArray(fields.summary) ? fields.summary[0] : fields.summary;
         const power = Array.isArray(fields.power) ? fields.power[0] : fields.power;
+        let category = Array.isArray(fields.category) ? fields.category[0] : fields.category;
+        category = category?.toLowerCase().trim() || "others";
 
         let deletedImages: string[] = [];
 
@@ -130,6 +132,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
             name,
             summary,
             power,
+            category,
             images: finalImages,
             updatedOn: new Date().toISOString(),
         };
