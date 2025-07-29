@@ -12,7 +12,7 @@ const ProblemStatementPage = () => {
             title: "Growing Energy Demand",
             description:
                 "Global energy consumption is increasing exponentially, putting unprecedented strain on existing power infrastructure.",
-            image: "/images/home/growing-demand.jpg",
+            image: "/images/home/growing-demand.png",
             stats: "40% increase by 2040",
         },
         {
@@ -94,12 +94,29 @@ const ProblemStatementPage = () => {
                         >
                             <Card className="h-full border-2 border-transparent hover:border-red-200 transition-all duration-500 hover:shadow-2xl bg-white/80 backdrop-blur-sm overflow-hidden group-hover:bg-white">
                                 <div className="relative aspect-[4/3] overflow-hidden -mt-6">
-                                    <Image
-                                        src={problem.image || "/placeholder.svg"}
-                                        alt={problem.title}
-                                        fill
-                                        className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                    />
+                                    {problem.title === "Growing Energy Demand" ? (
+                                        <motion.div
+                                            initial={{ scale: 1.1 }}
+                                            whileInView={{ scale: 1 }}
+                                            transition={{ duration: 1 }}
+                                            className="w-full h-full relative "
+                                        >
+                                            <Image
+                                                src={problem.image || "/placeholder.svg"}
+                                                alt={problem.title}
+                                                fill
+                                                className="object-cover group-hover:scale-110 transition-transform duration-700 "
+                                            />
+                                        </motion.div>
+                                    ) : (
+                                        <Image
+                                            src={problem.image || "/placeholder.svg"}
+                                            alt={problem.title}
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                        />
+                                    )}
+
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                                     {/* Icon */}

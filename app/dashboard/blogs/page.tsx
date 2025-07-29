@@ -30,7 +30,7 @@ export default function BlogPage() {
     title: "",
     summary: "",
     image: "",
-    category: categories[0],
+    category: "Technology",
   });
 
   const fileInputRef = useRef<HTMLInputElement>(null);
