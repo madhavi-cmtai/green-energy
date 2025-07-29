@@ -115,7 +115,7 @@ const TeamSection = () => {
                                     className="group"
                                 >
                                     <Card className="h-full border-2 border-transparent hover:border-emerald-200 transition-all duration-500 hover:shadow-sm bg-gradient-to-br from-white to-gray-50 group-hover:from-emerald-50 group-hover:to-teal-50 overflow-hidden">
-                                        <div className="relative h-80 overflow-hidden">
+                                        <div className="relative h-80 overflow-hidden -mt-7">
                                             <Image
                                                 src={member.image || '/placeholder.svg'}
                                                 alt={member.name}

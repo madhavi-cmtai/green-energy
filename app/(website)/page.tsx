@@ -8,6 +8,7 @@ import MagneticEnergySection from "@/components/home/magnetic-energy"
 import PartnersSection from "@/components/home/partner-section";
 import TestimonialSection from "@/components/home/testimonial-section";
 import ContactSection from "@/components/home/contact-section";
+import WorldWideMagEnergy from "@/components/home/worldwide-magEnergy";
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection/>
       <WhyChooseUs/>
+      <WorldWideMagEnergy/>
       <MagneticEnergySection/>
       <BlogsSection/>
       <LightProblemSolutions />
