@@ -12,7 +12,7 @@ const images = [
 const MagEnergyPage = () => {
     return (
         <section className="py-20 bg-background">
-            <div className="container max-w-8xl mx-auto px-4"> {/* Increased max-width */}
+            <div className="container max-w-screen-xl mx-auto px-4">
                 {/* Section Heading */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -21,7 +21,7 @@ const MagEnergyPage = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold text-foreground">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground">
                         World Wide <span className="text-[var(--primary-green)]">MagEnergy</span>
                     </h2>
                 </motion.div>
