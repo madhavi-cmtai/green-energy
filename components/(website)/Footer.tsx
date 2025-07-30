@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPinned } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -33,12 +33,15 @@ export default function Footer() {
           <h3 className="text-xl font-semibold text-white mb-3">Contact Us</h3>
           <ul className="space-y-2 text-sm">
             <li className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 mt-1 text-green-400" />
-              123 Green Energy Street, Eco City, Earth
+              <MapPinned className="w-16 h-6 text-green-400" />
+              Office :
+              Muscat Grand Mall
+              5th Floor, Building No. 6, Gubrah, Muscat, Sultanate of Oman
+              P.O. Box: 670, PC 116, Mina Al Fahal, Muscat, Sultanate of Oman, 
             </li>
             <li className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-green-400" />
-              +91 98765 22220
+              ++91 85274 49007
             </li>
             <li className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-green-400" />
@@ -49,21 +52,10 @@ export default function Footer() {
 
         {/* Social Media */}
         <div>
-          <h3 className="text-xl font-semibold text-white mb-3">Follow Us</h3>
-          <div className="flex space-x-4 mt-2">
-            <Link href="https://facebook.com" target="_blank" className="hover:text-white">
-              <Facebook className="w-5 h-5" />
-            </Link>
-            <Link href="https://twitter.com" target="_blank" className="hover:text-white">
-              <Twitter className="w-5 h-5" />
-            </Link>
-            <Link href="https://linkedin.com" target="_blank" className="hover:text-white">
-              <Linkedin className="w-5 h-5" />
-            </Link>
-            <Link href="https://instagram.com" target="_blank" className="hover:text-white">
-              <Instagram className="w-5 h-5" />
-            </Link>
-          </div>
+          <h3 className="text-xl font-semibold text-white mb-3">Privacy & Policy</h3>
+          <li className="flex items-center gap-2">
+            Terms & Conditions
+          </li>
         </div>
       </div>
 

@@ -155,7 +155,7 @@ const ContactSection = () => {
                                                 name="phone"
                                                 value={formData.phone}
                                                 onChange={handleInputChange}
-                                                placeholder="+1 (555) 123-4567"
+                                                placeholder="+91 55512-74567"
                                                 className="pl-10 h-10"
                                                 required
                                             />
@@ -209,19 +209,19 @@ const ContactSection = () => {
                             {
                                 icon: <Phone className="text-white" />,
                                 label: "Phone",
-                                value: "+1 (555) 123-4567",
+                                value: "+91 85274 49007",
                                 color: "from-emerald-500 to-teal-600",
                             },
                             {
                                 icon: <Mail className="text-white" />,
                                 label: "Email",
-                                value: "info@magnegen.com",
+                                value: "info@themaggen.com",
                                 color: "from-blue-500 to-cyan-600",
                             },
                             {
                                 icon: <MapPin className="text-white" />,
                                 label: "Address",
-                                value: "123 Green Energy Blvd, Clean City, CC 12345",
+                                value: "Muscat Grand Mall 5th Floor, Building No. 6, Gubrah, Muscat, Sultanate of Oman ",
                                 color: "from-purple-500 to-pink-600",
                             },
                         ].map(({ icon, label, value, color }, index) => (

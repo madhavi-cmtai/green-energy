@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Home, Gauge, Zap, Shield, Lightbulb, ChevronRight, Play } from "lucide-react";
+import { Home, Gauge, Zap, Shield, Lightbulb, ChevronRight, Play, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
     const stats = [
-        { number: "500+", label: "Installations", icon: Home },
+        { number: "5+ MV", label: "Genertor Ready", icon: Rocket },
         { number: "99.9%", label: "Uptime", icon: Gauge },
-        { number: "50MW", label: "Generated", icon: Zap },
+        { number: "50MW", label: "In Process", icon: Zap },
         { number: "24/7", label: "Support", icon: Shield },
     ];
 
@@ -103,15 +103,15 @@ const HeroSection = () => {
                         </motion.div>
 
                         <motion.h1
-                            className="text-4xl lg:text-6xl xl:text-6xl font-bold text-white mb-6 leading-tight"
+                            className="text-4xl lg:text-5xl xl:text-5xl font-bold text-white mb-6 leading-tight"
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: 0.3 }}
                         >
-                            Power the{" "}
+                            ENERGISING {"  "}
                             <motion.span className="relative inline-block" whileHover={{ scale: 1.05 }}>
                                 <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                                    Future
+                                    EARTH 
                                 </span>
                                 <motion.div
                                     className="absolute -bottom-2 left-0 w-full h-2 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"
@@ -121,7 +121,7 @@ const HeroSection = () => {
                                 />
                             </motion.span>
                             <br />
-                            with{" "}
+                            WITHOUT{" "}
                             <motion.span
                                 className="text-emerald-400"
                                 animate={{
@@ -133,7 +133,7 @@ const HeroSection = () => {
                                 }}
                                 transition={{ duration: 2, repeat: Infinity }}
                             >
-                                Magnetic Energy
+                                COSTING IT
                             </motion.span>
                         </motion.h1>
 
@@ -143,8 +143,8 @@ const HeroSection = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
                         >
-                            Experience the next generation of clean energy with our revolutionary magnetic electricity generators.
-                            <span className="text-emerald-400 font-semibold"> Zero fuel, infinite possibilities.</span>
+                            Join the revolution towards sustainable energy and help create a cleaner, 
+                            <span className="text-emerald-400 font-semibold"> greener future for generations to come.</span>
                         </motion.p>
 
                         <motion.div

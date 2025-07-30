@@ -2,19 +2,14 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductItem } from "@/lib/redux/features/productSlice";
 import ProductCard from "./productCard";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    fetchProducts,
-    selectProducts,
-    selectIsLoading,
-    selectError,
-} from "@/lib/redux/features/productSlice";
+import {   fetchProducts,   selectProducts,   selectIsLoading,   selectError} from "@/lib/redux/features/productSlice";
 import { AppDispatch } from "@/lib/redux/store";
+import Link from "next/link";
 
 // Animation variants
 const fadeInUp = {
@@ -111,9 +106,9 @@ export default function ProductsPage() {
                             className="text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight"
                             variants={fadeInUp}
                         >
-                            ENERGISING EARTH <br />
+                            Power the Future with <br />
                             <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                                WITHOUT COSTING IT
+                            Magnetic Energy
                             </span>
                         </motion.h2>
 
@@ -121,22 +116,24 @@ export default function ProductsPage() {
                             className="text-xl lg:text-2xl text-emerald-100 mb-12 leading-relaxed"
                             variants={fadeInUp}
                         >
-                            Join the revolution towards sustainable energy and help create a cleaner, greener future for generations to come.
+                            Experience the next generation of clean energy with our revolutionary magnetic electricity generators. Zero fuel, infinite possibilities.
                         </motion.p>
 
                         <motion.div className="flex flex-col sm:flex-row gap-6 justify-center" variants={fadeInUp}>
-                            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <Button className="bg-white ml-3 text-emerald-700 hover:bg-emerald-50 px-12 py-7 rounded-full text-lg font-semibold shadow-2xl">
                                     Explore Our Technology <ArrowRight className="ml-2 w-5 h-5" />
                                 </Button>
-                            </motion.div>
+                            </motion.div> */}
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Button
-                                    variant="outline"
-                                    className="border-2 border-white text-white hover:bg-white hover:text-emerald-700 px-10 py-7 rounded-full text-lg font-semibold bg-transparent backdrop-blur-sm"
-                                >
-                                    Contact Us
-                                </Button>
+                                <Link href="/contact">
+                                    <Button
+                                        variant="outline"
+                                        className="border-2 border-white text-white hover:bg-white hover:text-emerald-700 px-10 py-7 rounded-full text-lg font-semibold bg-transparent backdrop-blur-sm"
+                                    >
+                                        Contact Us
+                                    </Button>
+                                </Link>
                             </motion.div>
                         </motion.div>
                     </motion.div>

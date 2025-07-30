@@ -1,28 +1,29 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { User2, MailCheck, Info, MessageSquareMore } from "lucide-react"; // Updated icons
+import { User2, MailCheck, Info, MessageSquareMore, MessageCircle } from "lucide-react"; // Updated icons
 
 const actions = [
   {
     icon: <User2 />,
     label: "Profile",
     color: "bg-emerald-500 hover:bg-emerald-600",
-    href: "#",
+    href: "#", 
   },
   {
     icon: <MailCheck />,
-    label: "Messages",
-    color: "bg-teal-400 hover:bg-teal-500 text-black",
-    href: "#",
+    label: "Email",
+    color: "bg-teal-300 hover:bg-teal-500 text-black",
+    href: "mailto:info@themaggen.com",
   },
   {
-    icon: <Info />,
-    label: "Info",
-    color: "bg-cyan-500 hover:bg-cyan-600",
-    href: "#",
+    icon: <MessageCircle />,
+    label: "WhatsApp",
+    color: "bg-green-500 hover:bg-green-600",
+    href: "https://wa.me/918527449007",
   },
 ];
+
 
 const FloatingButtons = () => {
   const [open, setOpen] = useState(false);

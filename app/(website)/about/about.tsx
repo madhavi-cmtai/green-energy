@@ -533,9 +533,9 @@ const PowerOutputSection = () => {
           </motion.div>
 
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">
-            Maximum Power{" "}
+            Maximum Power Output From our{" "}
             <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-              Generated
+              5MV MagenGenerator
             </span>
           </h2>
         </motion.div>

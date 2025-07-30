@@ -22,7 +22,7 @@ const MagEnergyPage = () => {
                     className="text-center mb-12"
                 >
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground">
-                        World Wide <span className="text-[var(--primary-green)]">MagEnergy</span>
+                        World Wide Scope for <span className="text-[var(--primary-green)]">MagEnergy </span>
                     </h2>
                 </motion.div>
 

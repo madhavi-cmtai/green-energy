@@ -11,6 +11,7 @@ import ContactSection from "@/components/home/contact-section";
 import WorldWideMagEnergy from "@/components/home/worldwide-magEnergy";
 
 
+
 export default function Home() {
   return (
     <div>

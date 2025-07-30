@@ -40,7 +40,7 @@ export default function AboutSection() {
                             We’re committed to creating power systems that reduce carbon emissions and promote environmental harmony.
                         </p>
                         <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2 text-base md:text-lg">
-                            <li>Occupies less space in comparison to the solar industry</li>
+                            <li>Occupies less space in comparison to the conventional industries.</li>
                             <li>Variants include 5, 10, and 100 megawatt generators</li>
                             <li>Easy to install – plug and play</li>
                             <li>Easy to operate and maintain – uses no raw materials</li>
