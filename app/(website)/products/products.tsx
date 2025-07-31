@@ -74,24 +74,31 @@ export default function ProductsPage() {
                         transition={{ duration: 8, repeat: Infinity, repeatType: "reverse" }}
                     />
 
-                    {/* Energy Particles */}
-                    {[...Array(20)].map((_, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute w-2 h-2 bg-white rounded-full opacity-60"
-                            style={position}
-                            animate={{
-                                y: [0, -40, 0],
-                                opacity: [0.6, 1, 0.6],
-                                scale: [1, 1.5, 1],
-                            }}
-                            transition={{
-                                duration: 4 + Math.random() * 3,
-                                repeat: Infinity,
-                                delay: Math.random() * 2,
-                            }}
-                        />
-                    ))}
+                    {/* ✅ Floating Particles */}
+                    {[...Array(20)].map((_, i) => {
+                        const top = `${Math.random() * 100}%`;
+                        const left = `${Math.random() * 100}%`;
+                        const duration = 4 + Math.random() * 3;
+                        const delay = Math.random() * 2;
+
+                        return (
+                            <motion.div
+                                key={i}
+                                className="absolute w-2 h-2 bg-white rounded-full opacity-60"
+                                style={{ top, left }}
+                                animate={{
+                                    y: [0, -40, 0],
+                                    opacity: [0.6, 1, 0.6],
+                                    scale: [1, 1.5, 1],
+                                }}
+                                transition={{
+                                    duration,
+                                    repeat: Infinity,
+                                    delay,
+                                }}
+                            />
+                        );
+                    })}
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
@@ -108,7 +115,7 @@ export default function ProductsPage() {
                         >
                             Power the Future with <br />
                             <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                            Magnetic Energy
+                                Magnetic Energy
                             </span>
                         </motion.h2>
 
@@ -116,15 +123,11 @@ export default function ProductsPage() {
                             className="text-xl lg:text-2xl text-emerald-100 mb-12 leading-relaxed"
                             variants={fadeInUp}
                         >
-                            Experience the next generation of clean energy with our revolutionary magnetic electricity generators. Zero fuel, infinite possibilities.
+                            Experience the next generation of clean energy with our revolutionary magnetic electricity generators.
+                            Zero fuel, infinite possibilities.
                         </motion.p>
 
                         <motion.div className="flex flex-col sm:flex-row gap-6 justify-center" variants={fadeInUp}>
-                            {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                                <Button className="bg-white ml-3 text-emerald-700 hover:bg-emerald-50 px-12 py-7 rounded-full text-lg font-semibold shadow-2xl">
-                                    Explore Our Technology <ArrowRight className="ml-2 w-5 h-5" />
-                                </Button>
-                            </motion.div> */}
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <Link href="/contact">
                                     <Button

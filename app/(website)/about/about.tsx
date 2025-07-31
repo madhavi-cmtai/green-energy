@@ -51,7 +51,6 @@ const scaleIn = {
 }
 
 // Hero Section Component
-
 const HeroSection = () => {
   const [isClient, setIsClient] = useState(false);
 
@@ -279,8 +278,6 @@ const HeroSection = () => {
   );
 };
 
-
-
 // Content Highlights Section
 const ContentHighlightsSection = () => {
   const highlights = [
@@ -357,7 +354,7 @@ const ContentHighlightsSection = () => {
         </motion.div>
       </div>
     </section>
-    <TeamMembersSection/>
+    
   </>
   )
 }
@@ -868,7 +865,7 @@ const KeyInsightsSection = () => {
         </motion.div>
       </div>
     </section>
-    <CarbonXHeroSection/>
+   
     </>
   )
 }
@@ -881,11 +878,13 @@ export default function AboutPage() {
     <div className="min-h-screen">
       <HeroSection />
       <ContentHighlightsSection />
+      <TeamMembersSection />
       <FeatureGridSection />
       <PowerOutputSection />
       <MarketChartSection />
       <ZeroEmissionProjectionsSection />
       <KeyInsightsSection />
+      <CarbonXHeroSection />
     </div>
   )
 }

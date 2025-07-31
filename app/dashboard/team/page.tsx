@@ -3,30 +3,10 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogFooter,
-    DialogClose,
-} from "@/components/ui/dialog";
-import {
-    Loader2,
-    Plus,
-    Search,
-} from "lucide-react";
+import {  Dialog,  DialogContent,  DialogHeader,  DialogTitle,  DialogFooter, DialogClose,} from "@/components/ui/dialog";
+import {  Loader2,  Plus,  Search,} from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-    fetchTeamMembers,
-    selectTeamMembers,
-    selectError,
-    selectIsLoading,
-    addTeamMember,
-    updateTeamMember,
-    deleteTeamMember,
-    TeamMember,
-} from "@/lib/redux/features/teamMemberSlice";
+import {  fetchTeamMembers,  selectTeamMembers,  selectError,  selectIsLoading,  addTeamMember, updateTeamMember, deleteTeamMember, TeamMember,} from "@/lib/redux/features/teamMemberSlice";
 import { AppDispatch } from "@/lib/redux/store";
 import { toast } from "sonner";
 import TeamCard from "./teamCard";
@@ -44,10 +24,8 @@ export default function TeamPage() {
     const [editMember, setEditMember] = useState<TeamMember | null>(null);
     const [form, setForm] = useState({
         name: "",
-        email: "",
         position: "",
         bio: "",
-        linkedin: "",
         image: "",
     });
 
@@ -70,10 +48,8 @@ export default function TeamPage() {
         setEditMember(null);
         setForm({
             name: "",
-            email: "",
             position: "",
             bio: "",
-            linkedin: "",
             image: "",
         });
         setImageFile(null);
@@ -85,10 +61,8 @@ export default function TeamPage() {
         setEditMember(member);
         setForm({
             name: member.name || "",
-            email: member.email || "",
             position: member.position || "",
             bio: member.bio || "",
-            linkedin: member.linkedin || "",
             image: member.image || "",
         });
         setImageFile(null);
@@ -110,10 +84,8 @@ export default function TeamPage() {
         try {
             const formData = new FormData();
             formData.append("name", form.name);
-            formData.append("email", form.email);
             formData.append("position", form.position);
             formData.append("bio", form.bio);
-            formData.append("linkedin", form.linkedin);
             if (imageFile) {
                 formData.append("image", imageFile);
             } else if (!editMember) {
@@ -213,26 +185,10 @@ export default function TeamPage() {
                             required
                         />
                         <Input
-                            placeholder="Email"
-                            type="email"
-                            value={form.email}
-                            onChange={(e) =>
-                                setForm((f) => ({ ...f, email: e.target.value }))
-                            }
-                            required
-                        />
-                        <Input
                             placeholder="Position"
                             value={form.position}
                             onChange={(e) =>
                                 setForm((f) => ({ ...f, position: e.target.value }))
-                            }
-                        />
-                        <Input
-                            placeholder="LinkedIn URL"
-                            value={form.linkedin}
-                            onChange={(e) =>
-                                setForm((f) => ({ ...f, linkedin: e.target.value }))
                             }
                         />
                         <textarea

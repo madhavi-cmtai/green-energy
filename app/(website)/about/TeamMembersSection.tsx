@@ -3,16 +3,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@/lib/redux/store';
-import {
-    fetchTeamMembers,
-    selectIsLoading,
-    selectTeamMembers
-} from '@/lib/redux/features/teamMemberSlice';
+import {  fetchTeamMembers,  selectIsLoading,  selectTeamMembers} from '@/lib/redux/features/teamMemberSlice';
 import { Mail, Users } from 'lucide-react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import CarbonXHeroSection from './CarbonXHeroSection';
+
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -132,27 +128,7 @@ const TeamSection = () => {
                                             </div>
                                         </div>
 
-                                        <CardContent className="p-6">
-                                            <div className="flex justify-start items-center gap-12 -mt-5 mb-4">
-                                                {member.linkedin && (
-                                                    <a
-                                                        href={member.linkedin}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-emerald-600 hover:underline ml-14"
-                                                    >
-                                                        LinkedIn
-                                                    </a>
-                                                )}
-                                                {member.email && (
-                                                    <a
-                                                        href={`mailto:${member.email}`}
-                                                        className="text-teal-600 hover:underline"
-                                                    >
-                                                        Email
-                                                    </a>
-                                                )}
-                                            </div>
+                                        <CardContent className="p-6"> 
                                             <p className="text-gray-600 leading-relaxed mb-4 whitespace-pre-line">
                                                 {(member.bio ?? '').replace(/\n/g, ' ')}
 

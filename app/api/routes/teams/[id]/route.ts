@@ -56,10 +56,10 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
         });
 
         const name = Array.isArray(fields.name) ? fields.name[0] : fields.name;
-        const email = Array.isArray(fields.email) ? fields.email[0] : fields.email;
+        // const email = Array.isArray(fields.email) ? fields.email[0] : fields.email;
         const position = Array.isArray(fields.position) ? fields.position[0] : fields.position || "";
         const bio = Array.isArray(fields.bio) ? fields.bio[0] : fields.bio || "";
-        const linkedin = Array.isArray(fields.linkedin) ? fields.linkedin[0] : fields.linkedin || "";
+        // const linkedin = Array.isArray(fields.linkedin) ? fields.linkedin[0] : fields.linkedin || "";
         const image = Array.isArray(files.image) ? files.image[0] : files.image;
 
         let imageUrl = existing.image || "";
@@ -87,10 +87,10 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
 
         const updatedData = {
             name: name || existing.name,
-            email: email || existing.email,
+            // email: email || existing.email,
             position,
             bio,
-            linkedin,
+            // linkedin,
             image: imageUrl,
         };
 

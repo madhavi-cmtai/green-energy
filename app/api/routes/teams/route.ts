@@ -28,18 +28,18 @@ export async function POST(req: NextRequest) {
         });
 
         const name = Array.isArray(fields.name) ? fields.name[0] : fields.name;
-        const email = Array.isArray(fields.email) ? fields.email[0] : fields.email;
+        // const email = Array.isArray(fields.email) ? fields.email[0] : fields.email;
         const position = Array.isArray(fields.position) ? fields.position[0] : fields.position || "";
         const bio = Array.isArray(fields.bio) ? fields.bio[0] : fields.bio || "";
-        const linkedin = Array.isArray(fields.linkedin) ? fields.linkedin[0] : fields.linkedin || "";
+        // const linkedin = Array.isArray(fields.linkedin) ? fields.linkedin[0] : fields.linkedin || "";
         const image = Array.isArray(files.image) ? files.image[0] : files.image;
 
-        if (!name || !email) {
+        if (!name) {
             return NextResponse.json(
                 {
                     statusCode: 400,
                     errorCode: "VALIDATION_ERROR",
-                    errorMessage: "Name and email are required",
+                    errorMessage: "Name is required",
                 },
                 { status: 400 }
             );
@@ -62,10 +62,10 @@ export async function POST(req: NextRequest) {
 
         const newMember = {
             name,
-            email,
+            // email,
             position,
             bio,
-            linkedin,
+            // linkedin,
             image: imageUrl,
         };
 

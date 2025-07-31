@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Home, Gauge, Zap, Shield, Lightbulb, ChevronRight, Play, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const HeroSection = () => {
     const stats = [
@@ -193,23 +194,25 @@ const HeroSection = () => {
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.6 }}
                         >
-                            <div className="relative aspect-video bg-gradient-to-br from-emerald-900 to-teal-900">
+                            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
+                                {/* Background image instead of video */}
+                                <Image
+                                    src="/images/home/hero.jpeg" // ✅ Replace with your image path
+                                    alt="Background"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+
+                                {/* Optional animated gradient overlay */}
                                 <motion.div
                                     className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-teal-500/20"
                                     animate={{ opacity: [0.2, 0.4, 0.2] }}
                                     transition={{ duration: 3, repeat: Infinity }}
                                 />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <motion.div
-                                        className="w-32 h-32 border-4 border-emerald-400 rounded-full flex items-center justify-center cursor-pointer group"
-                                        whileHover={{ scale: 1.1 }}
-                                        animate={{ rotate: [0, 360] }}
-                                        transition={{ rotate: { duration: 20, repeat: Infinity, ease: "linear" } }}
-                                    >
-                                        <Play className="w-12 h-12 text-emerald-400 group-hover:text-white transition-colors ml-1" />
-                                    </motion.div>
-                                </div>
+
                             </div>
+
                             <motion.div
                                 className="absolute bottom-4 right-4 w-24 h-24 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 flex items-center justify-center"
                                 animate={{ y: [-5, 5, -5] }}
